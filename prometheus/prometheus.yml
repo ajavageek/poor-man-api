@@ -1,0 +1,12 @@
+global:
+  scrape_interval: 5s
+  external_labels:
+    stack: "apisix"
+scrape_configs:
+  - job_name: "prometheus"
+    static_configs:
+      - targets: [ "localhost:9090" ]
+  - job_name: "apisix"
+    metrics_path: "/apisix/prometheus/metrics"
+    static_configs:
+      - targets: [ "apisix:9091" ]
